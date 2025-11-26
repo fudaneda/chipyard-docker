@@ -2,6 +2,10 @@
   "name": "Chipyard (Fudan EDA image)",
   "image": "ghcr.io/fudaneda/chipyard:latest",
   "remoteUser": "root",
+  "hostRequirements": {
+    "cpus": 4,
+    "memory": "8gb"
+  },
   "postCreateCommand": "echo 'Chipyard devcontainer ready.'",
   "customizations": {
     "vscode": {
