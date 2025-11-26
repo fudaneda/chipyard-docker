@@ -1,43 +1,20 @@
 {
-  "name": "Debian Bookworm (32-core preferred)",
-  "image": "debian:bookworm",
-
-  // Codespaces / devcontainer 规范：这里只能写最低规格
-  "hostRequirements": {
-    "cpus": 32,
-    "memory": "128gb",
-    "storage": "64gb"
-  },
-
-  // 常用开发包
-  "postCreateCommand": "apt-get update && apt-get install -y sudo git curl ca-certificates build-essential && rm -rf /var/lib/apt/lists/*",
-
-  // 给默认用户加 sudo（Codespaces 默认是 vscode 用户；纯 Docker 环境可能是 root）
-  "remoteUser": "vscode",
-  "features": {
-    "ghcr.io/devcontainers/features/common-utils:2": {
-      "username": "vscode",
-      "installZsh": true,
-      "upgradePackages": true
-    }
-  },
-
+  "name": "Chipyard (Fudan EDA image)",
+  "image": "ghcr.io/fudaneda/chipyard:latest",
+  "remoteUser": "root",
+  "postCreateCommand": "echo 'Chipyard devcontainer ready.'",
   "customizations": {
     "vscode": {
       "settings": {
-        "terminal.integrated.defaultProfile.linux": "zsh"
+        "terminal.integrated.defaultProfile.linux": "bash"
       },
       "extensions": [
-        "ms-vscode.cpptools",
+        "ms-vscode.remote-containers",
         "ms-azuretools.vscode-docker",
         "eamodio.gitlens"
       ]
     }
   },
-
-  // 可选：转发端口
-  "forwardPorts": [3000, 8000],
-
-  // 可选：把仓库挂到 /workspaces/xxx
+  "forwardPorts": [],
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}"
 }
