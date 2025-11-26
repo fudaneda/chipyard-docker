@@ -1,1 +1,11 @@
 image: ghcr.io/fudaneda/chipyard:latest
+
+workspaceClass: g1-standard
+
+tasks:
+  - name: init
+    init: |
+      mkdir -p /root/chipyard
+    command: |
+      cd /root/chipyard
+      bash
